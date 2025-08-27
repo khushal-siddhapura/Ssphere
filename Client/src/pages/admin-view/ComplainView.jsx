@@ -48,7 +48,7 @@ function ComplainView() {
     if (!complaintDetails) return;
     try {
       const response = await fetch(
-        "http://localhost:5000/api/admin/complaints/send-complaint-email",
+        "https://ssphere.onrender.com/api/admin/complaints/send-complaint-email",
         {
           method: "POST",
           headers: {

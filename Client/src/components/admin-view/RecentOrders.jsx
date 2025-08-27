@@ -10,7 +10,7 @@ const RecentOrders = () => {
     const fetchRecentOrders = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/dashboard"
+          "https://ssphere.onrender.com/api/admin/dashboard"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch orders");

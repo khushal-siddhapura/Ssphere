@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
-import axios from "axios"; 
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  Legend,
+} from "recharts";
+import axios from "axios";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28DFF"];
 
@@ -10,10 +17,12 @@ const CategoryChart = () => {
   useEffect(() => {
     const fetchCategorySalesData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/sales-by-category");
+        const response = await axios.get(
+          "https://ssphere.onrender.com/api/sales-by-category"
+        );
 
         const transformedData = Object.keys(response.data).map((key) => ({
-          name: key, 
+          name: key,
           value: response.data[key],
         }));
 

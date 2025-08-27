@@ -1,15 +1,20 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Async thunk to fetch top products from the API
-export const fetchTopProducts = createAsyncThunk('topProducts/fetchTopProducts', async () => {
-  const response = await fetch('http://localhost:5000/api/topproducts');
-  const data = await response.json();
-  return data;
-});
+export const fetchTopProducts = createAsyncThunk(
+  "topProducts/fetchTopProducts",
+  async () => {
+    const response = await fetch(
+      "https://ssphere.onrender.com/api/topproducts"
+    );
+    const data = await response.json();
+    return data;
+  }
+);
 
 // Create the slice
 const topProductsSlice = createSlice({
-  name: 'topProducts',
+  name: "topProducts",
   initialState: {
     products: [],
     loading: false,
