@@ -13,7 +13,7 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    strictPort: true, // Ensures it doesn't switch to a different port if 3001 is in use
+    // strictPort: true, // Ensures it doesn't switch to a different port if 3001 is in use
     host: "localhost", // Ensures it binds to localhost
   },
   build: {
