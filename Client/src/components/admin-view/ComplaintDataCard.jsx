@@ -1,4 +1,4 @@
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/components/ui/Progress.jsx";
 import { Card } from "@/components/ui/card";
 import {
   BarChart,
