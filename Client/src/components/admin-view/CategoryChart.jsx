@@ -18,7 +18,7 @@ const CategoryChart = () => {
     const fetchCategorySalesData = async () => {
       try {
         const response = await axios.get(
-          "https://ssphere.onrender.com/api/sales-by-category"
+          "https://ssphere-e-commerce-company.onrender.com/api/sales-by-category"
         );
 
         const transformedData = Object.keys(response.data).map((key) => ({
