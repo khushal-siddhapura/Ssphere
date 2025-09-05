@@ -5,7 +5,7 @@ export const fetchTopProducts = createAsyncThunk(
   "topProducts/fetchTopProducts",
   async () => {
     const response = await fetch(
-      "https://ssphere.onrender.com/api/topproducts"
+      "https://ssphere-e-commerce-company.onrender.com/api/topproducts"
     );
     const data = await response.json();
     return data;

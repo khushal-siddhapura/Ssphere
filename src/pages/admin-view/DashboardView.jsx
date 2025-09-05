@@ -18,7 +18,7 @@ const DashboardView = () => {
     const fetchAdminMetrics = async () => {
       try {
         const response = await fetch(
-          "https://ssphere.onrender.com/api/admin/dashboard"
+          "https://ssphere-e-commerce-company.onrender.com/api/admin/dashboard"
         );
         const data = await response.json();
         setAdminMetrics(data);

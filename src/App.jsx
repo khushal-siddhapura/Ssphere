@@ -30,13 +30,12 @@ import ComplaintPanel from "./pages/shopping-view/ComplaintPanel";
 import ResetPassword from "./pages/auth/ResetPassword";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ComplainView from "./pages/admin-view/ComplainView";
-import RevenueData from "./pages/admin-view/revenueData";
+import RevenueData from "./pages/admin-view/RevenueData.jsx";
 import AdminList from "./pages/admin-view/AdminList";
 import UserManagement from "./components/admin-view/UserManagement";
 // import PrivateRoute from "./components/PrivateRoute";  // import PrivateRoute component
 
 const PrivateRoute = ({ isAuthenticated, children }) => {
-
   if (!isAuthenticated) {
     return <Navigate to="/auth/login" />;
   }
