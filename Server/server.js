@@ -30,11 +30,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;
 
-mongoose
-  .connect(URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((error) => console.log(error));
-
 app.use(
   cors({
     origin: ["https://ssphere-e-commerce-company.vercel.app"], // allow only your Vercel frontend
@@ -42,6 +37,11 @@ app.use(
     credentials: true, // if using cookies or auth headers
   })
 );
+
+mongoose
+  .connect(URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((error) => console.log(error));
 
 app.use(cookieParser());
 app.use(express.json());
