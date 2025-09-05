@@ -30,20 +30,25 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;
 
-app.use(
-  cors({
-    origin: ["https://ssphere-e-commerce-company.vercel.app"], // allow only your Vercel frontend
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    credentials: true, // if using cookies or auth headers
-  })
-);
-
-app.options("*", cors());
-
 mongoose
   .connect(URI)
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
+
+app.use(
+  cors({
+    origin: "https://ssphere-e-commerce-company.vercel.app/shop/home",
+    methods: ["GET", "POST", "DELETE", "PUT"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "Pragma",
+    ],
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
@@ -69,4 +74,6 @@ app.use("/api", userRouter);
 app.use("/api", resetPasswordRoutes);
 app.use("/api/feature-images", commonFeatureRouter);
 
-app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () =>
+  console.log(`Server is now running on port ${PORT}`)
+);
