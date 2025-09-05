@@ -37,7 +37,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "https://ssphere-e-commerce-company.vercel.app/shop/home",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
