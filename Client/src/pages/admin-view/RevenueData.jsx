@@ -1,14 +1,12 @@
-import ComplaintDataCard from '@/components/admin-view/ComplaintDataCard'
-import RevenueDetails from '@/components/admin-view/RevenueDetails'
-import React from 'react'
+import RevenueDetails from "@/components/admin-view/RevenueDetails";
+import React from "react";
 
 const RevenueData = () => {
   return (
     <div>
-      <RevenueDetails/>
-      {/* <ComplaintDataCard/> */}
+      <RevenueDetails />
     </div>
-  )
-}
+  );
+};
 
-export default RevenueData
+export default RevenueData;
