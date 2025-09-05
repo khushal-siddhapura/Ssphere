@@ -11,20 +11,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  server: {
-    port: 5173,
-    // strictPort: true, // Ensures it doesn't switch to a different port if 3001 is in use
-    host: "localhost", // Ensures it binds to localhost
-  },
   build: {
     outDir: "dist",
     emptyOutDir: true,
   },
   optimizeDeps: {
-    include: [
-      "react",
-      "react-dom",
-      // Add other heavy deps here if needed
-    ],
+    include: ["react", "react-dom"],
   },
 });
