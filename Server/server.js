@@ -37,7 +37,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "https://ssphere-e-commerce-company.vercel.app/auth/login",
+    origin: "https://ssphere-e-commerce-company.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
