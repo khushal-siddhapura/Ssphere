@@ -38,6 +38,8 @@ app.use(
   })
 );
 
+app.options("*", cors());
+
 mongoose
   .connect(URI)
   .then(() => console.log("MongoDB connected"))
