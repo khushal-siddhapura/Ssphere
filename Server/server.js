@@ -37,14 +37,9 @@ mongoose
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // if you're using cookies or sessions
+    origin: ["https://ssphere-e-commerce-company.vercel.app"], // allow only your Vercel frontend
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    credentials: true, // if using cookies or auth headers
   })
 );
 
