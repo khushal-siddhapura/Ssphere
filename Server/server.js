@@ -70,8 +70,8 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
-app.use("/api", userRouter);
-app.use("/api", resetPasswordRoutes);
+app.use("/api/common/user", userRouter);
+app.use("/api/common/reset-password", resetPasswordRoutes);
 app.use("/api/feature-images", commonFeatureRouter);
 
 app.listen(PORT, "0.0.0.0", () =>
