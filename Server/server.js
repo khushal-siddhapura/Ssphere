@@ -38,7 +38,7 @@ mongoose
 // CORS middleware must be applied before any routes
 app.use(
   cors({
-    origin: "https://ssphere-e-commerce-company.vercel.app",
+    origin: true,
     methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
@@ -55,7 +55,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: "https://ssphere-e-commerce-company.vercel.app",
+    origin: true,
     methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
