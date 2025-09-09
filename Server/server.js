@@ -35,10 +35,28 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
+// CORS middleware must be applied before any routes
 app.use(
   cors({
     origin: "https://ssphere-e-commerce-company.vercel.app",
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "Pragma",
+    ],
+    credentials: true,
+  })
+);
+
+// Explicitly handle preflight requests for all routes
+app.options(
+  "*",
+  cors({
+    origin: "https://ssphere-e-commerce-company.vercel.app",
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     allowedHeaders: [
       "Content-Type",
       "Authorization",
