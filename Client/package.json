@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --port 5173",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:case": "npx case-sensitive-paths-webpack-plugin"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
