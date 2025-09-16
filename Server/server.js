@@ -35,38 +35,27 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
-// CORS middleware must be applied before any routes
+const allowedOrigins = ["https://ssphere-e-commerce-company.vercel.app"];
+
 app.use(
   cors({
-    origin: true,
-    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Expires",
-      "Pragma",
-    ],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
-// Explicitly handle preflight requests for all routes
-app.options(
-  "*",
-  cors({
-    origin: true,
-    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Expires",
-      "Pragma",
-    ],
-    credentials: true,
-  })
-);
+// Handle preflight requests for all routes
+app.options("*", cors());
 
 app.use(cookieParser());
 app.use(express.json());
