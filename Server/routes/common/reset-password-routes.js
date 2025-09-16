@@ -35,7 +35,7 @@ router.post("/forgot-password", async (req, res) => {
   await user.save();
 
   // Send the reset link via email
-  const resetLink = `https://ssphere-e-commerce-company.vercel.app/auth/reset-password/${resetToken}`;
+  const resetLink = `https://ssphere-indol.vercel.app/auth/reset-password/${resetToken}`;
 
   const mailOptions = {
     from: "vivek@gmail.com",
