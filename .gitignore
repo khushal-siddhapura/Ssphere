@@ -146,3 +146,4 @@ Server/dist/
 Server/build/
 Server/.env
 Server/.env.local
+node_modules
