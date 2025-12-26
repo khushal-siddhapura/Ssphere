@@ -35,7 +35,10 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
-const allowedOrigins = ["https://ssphere-indol.vercel.app"];
+const allowedOrigins = [
+  "https://ssphere-indol.vercel.app",
+  "http://localhost:5173",
+];
 
 app.use(
   cors({
