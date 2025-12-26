@@ -22,7 +22,7 @@ const UserManagement = () => {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter,setFilter] = useState("all");
+  const [filter, setFilter] = useState("all");
   const [filterUsers, setFilterUsers] = useState([]);
   const { toast } = useToast();
 
@@ -30,7 +30,7 @@ const UserManagement = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/users`
+          `${import.meta.env.VITE_API_BASE_URL}/api/common/user`
         );
         setUsers(response.data);
       } catch (error) {
@@ -46,7 +46,7 @@ const UserManagement = () => {
   const handleBlockUser = async (userId) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/users/${userId}/status`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/common/user/${userId}/status`,
         {
           status: "blocked",
         }
@@ -75,7 +75,7 @@ const UserManagement = () => {
   const handleUnblockUser = async (userId) => {
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URL}/users/${userId}/status`,
+        `${import.meta.env.VITE_API_BASE_URL}/api/common/user/${userId}/status`,
         {
           status: "active",
         }
@@ -100,34 +100,36 @@ const UserManagement = () => {
       });
     }
   };
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     const status = e.target.value;
     setFilter(status);
 
-    if(status === "all"){
-      setFilterUsers(users)
-    }else{
-      const filteredUsersList = users.filter((user) => user.status === status)
+    if (status === "all") {
+      setFilterUsers(users);
+    } else {
+      const filteredUsersList = users.filter((user) => user.status === status);
       setFilterUsers(filteredUsersList);
     }
-
-  }
+  };
 
   useEffect(() => {
-    if(filter === "all"){
-      setFilterUsers(users)
-    }else{
+    if (filter === "all") {
+      setFilterUsers(users);
+    } else {
       const filterUserData = users.filter((user) => user.status === filter);
       setFilterUsers(filterUserData);
     }
-  }, [users,filter])
+  }, [users, filter]);
 
   return (
     <div className="p-6 border border-gray-300 min-h-screen rounded-lg">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold mb-4">User Details</h2>
         <div className="ml-auto">
-          <select className="border border-gray-500 p-2 rounded" onChange={handleChange}>
+          <select
+            className="border border-gray-500 p-2 rounded"
+            onChange={handleChange}
+          >
             <option value="all">All</option>
             <option value="blocked">Blocked</option>
             <option value="active">Active</option>
